@@ -1,8 +1,8 @@
 class Key
 	def key_generator
 		numbers        = [0,1,2,3,4,5,6,7,8,9]
-		numbers_string = numbers.sample(5).join
-	end
+		numbers_string = (numbers * 5).sample(5).join
+	end                                             # => :key_generator
 
 	def key_parser
 		key_string     = key_generator
@@ -13,8 +13,9 @@ class Key
 		paired_digits << key_string[2..3].to_i
 		paired_digits << key_string[3..4].to_i
 		paired_digits
-	end
-end
+	end                                      # => :key_parser
+	# print out array to hold on to key for decryption
+end                                       # => :key_parser
 
 # capture 5 digit sample with new variable
 # take that array join the numbers
