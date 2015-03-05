@@ -1,0 +1,2 @@
+class Encryptor
+end

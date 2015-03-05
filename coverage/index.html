@@ -14,7 +14,7 @@
       <img src="./assets/0.9.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-05T09:45:08-07:00">2015-03-05T09:45:08-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-05T15:03:17-07:00">2015-03-05T15:03:17-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.8
+         4.4
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>1</b> files in total.
-    <b>19</b> relevant lines. 
-    <span class="green"><b>19</b> lines covered</span> and
+    <b>22</b> relevant lines. 
+    <span class="green"><b>22</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -53,11 +53,11 @@
       <tr>
         <td class="strong"><a href="#47fbe0bbd3ee830261295975e9c44f441e3bb3bc" class="src_link" title="lib/rotator.rb">lib/rotator.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>49</td>
-        <td>19</td>
-        <td>19</td>
+        <td>56</td>
+        <td>22</td>
+        <td>22</td>
         <td>0</td>
-        <td>4.8</td>
+        <td>4.4</td>
       </tr>
       
     </tbody>
@@ -81,8 +81,8 @@
     <h3>lib/rotator.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>19</b> relevant lines. 
-      <span class="green"><b>19</b> lines covered</span> and
+      <b>22</b> relevant lines. 
+      <span class="green"><b>22</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -99,7 +99,7 @@
         <li class="covered" data-hits="1" data-linenumber="2">
           <span class="hits">1</span>
           
-          <code class="ruby">	attr_reader :key, :offset</code>
+          <code class="ruby">	attr_reader :key, :offset  # =&gt; nil</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="3">
@@ -117,19 +117,19 @@
         <li class="covered" data-hits="6" data-linenumber="5">
           <span class="hits">6</span>
           
-          <code class="ruby">		@key     = key.to_s</code>
+          <code class="ruby">		@key     = key.to_s                               # =&gt; &quot;0&quot;</code>
         </li>
       
         <li class="covered" data-hits="6" data-linenumber="6">
           <span class="hits">6</span>
           
-          <code class="ruby">		@offset  = offset.to_s</code>
+          <code class="ruby">		@offset  = offset.to_s                            # =&gt; &quot;0&quot;</code>
         </li>
       
         <li class="covered" data-hits="6" data-linenumber="7">
           <span class="hits">6</span>
           
-          <code class="ruby">		@message = message</code>
+          <code class="ruby">		@message = message                                # =&gt; &quot;&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="8">
@@ -141,7 +141,7 @@
         <li class="never" data-hits="" data-linenumber="9">
           
           
-          <code class="ruby">	end</code>
+          <code class="ruby">	end                                                # =&gt; :initialize</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="10">
@@ -177,7 +177,7 @@
         <li class="never" data-hits="" data-linenumber="15">
           
           
-          <code class="ruby">	# encryptor calls key for a key, offset_calc for an offset</code>
+          <code class="ruby">	# encryptor calls &quot;key&quot; for a key, offset_calc for an offset (maybe just call rotator for all info)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
@@ -204,16 +204,16 @@
           <code class="ruby">	def character_map</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="20">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="20">
+          <span class="hits">4</span>
           
-          <code class="ruby">		character_map = [*(&#39;a&#39;..&#39;z&#39;), *(0..9), &#39; &#39;, &#39;.&#39;, &#39;,&#39;]</code>
+          <code class="ruby">		character_map = [*(&#39;a&#39;..&#39;z&#39;), *(0..9), &#39; &#39;, &#39;.&#39;, &#39;,&#39;]  # =&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot;, &quot;h&quot;, &quot;i&quot;, &quot;j&quot;, &quot;k&quot;, &quot;l&quot;, &quot;m&quot;, &quot;n&quot;, &quot;o&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;, &quot;s&quot;, &quot;t&quot;, &quot;u&quot;, &quot;v&quot;, &quot;w&quot;, &quot;x&quot;, &quot;y&quot;, &quot;z&quot;, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, &quot; &quot;, &quot;.&quot;, &quot;,&quot;]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="21">
           
           
-          <code class="ruby">	end</code>
+          <code class="ruby">  end                                                    # =&gt; :character_map</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="22">
@@ -237,13 +237,13 @@
         <li class="covered" data-hits="12" data-linenumber="25">
           <span class="hits">12</span>
           
-          <code class="ruby">  		first_index  = i</code>
+          <code class="ruby">  		first_index    = i</code>
         </li>
       
         <li class="covered" data-hits="12" data-linenumber="26">
           <span class="hits">12</span>
           
-          <code class="ruby">  		second_index = i + 1</code>
+          <code class="ruby">  		second_index   = i + 1</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="27">
@@ -285,7 +285,7 @@
         <li class="never" data-hits="" data-linenumber="33">
           
           
-          <code class="ruby">	end</code>
+          <code class="ruby">	end                              # =&gt; :calculate_key_offset_sum</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="34">
@@ -300,70 +300,70 @@
           <code class="ruby">	def rotate_by(calculated_key_offset_sum)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="36">
+        <li class="never" data-hits="" data-linenumber="36">
+          
+          
+          <code class="ruby">		# a,b,c,d         = </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="37">
           <span class="hits">1</span>
           
-          <code class="ruby">		a,b,c,d = calculated_key_offset_sum </code>
+          <code class="ruby">		calculate_key_offset_sum = calculated_key_offset_sum</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="37">
-          
-          
-          <code class="ruby">	end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="38">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="39">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="40">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="41">
+        <li class="covered" data-hits="1" data-linenumber="38">
           <span class="hits">1</span>
           
-          <code class="ruby">rotator = Rotator.new</code>
+          <code class="ruby">		first_character = @message[0]</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="42">
+        <li class="covered" data-hits="1" data-linenumber="39">
           <span class="hits">1</span>
           
-          <code class="ruby">rotator.character_map</code>
+          <code class="ruby">		result = (character_map.index(first_character) + calculate_key_offset_sum[0]) % 39</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="40">
+          <span class="hits">1</span>
+          
+          <code class="ruby">		character_map[result].to_s</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="41">
+          
+          
+          <code class="ruby">		#(character_map[letter] + calculated_key_offset_sum) % character_map.size</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="42">
+          
+          
+          <code class="ruby">		# how do i return the char not index position</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="43">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">	end                                                                                  # =&gt; :rotate_by</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="44">
           
           
-          <code class="ruby"># sum_of_key_and_offset will be total number of times </code>
+          <code class="ruby">end                                                                                   # =&gt; :rotate_by</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="45">
           
           
-          <code class="ruby"># a,b,c,d rotate each character in text</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="46">
           
           
-          <code class="ruby"># text </code>
+          <code class="ruby"># ((index of original letter) + rotation + offset) % character_map.size`</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="47">
@@ -372,13 +372,55 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="48">
+        <li class="covered" data-hits="1" data-linenumber="48">
+          <span class="hits">1</span>
+          
+          <code class="ruby">rotator = Rotator.new  # =&gt; #&lt;Rotator:0x007fc5b580b9c0 @key=&quot;0&quot;, @offset=&quot;0&quot;, @message=&quot;&quot;&gt;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="49">
+          <span class="hits">1</span>
+          
+          <code class="ruby">rotator.character_map  # =&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot;, &quot;h&quot;, &quot;i&quot;, &quot;j&quot;, &quot;k&quot;, &quot;l&quot;, &quot;m&quot;, &quot;n&quot;, &quot;o&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;, &quot;s&quot;, &quot;t&quot;, &quot;u&quot;, &quot;v&quot;, &quot;w&quot;, &quot;x&quot;, &quot;y&quot;, &quot;z&quot;, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, &quot; &quot;, &quot;.&quot;, &quot;,&quot;]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="50">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="51">
+          
+          
+          <code class="ruby"># sum_of_key_and_offset will be total number of times </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="52">
+          
+          
+          <code class="ruby"># a,b,c,d rotate each character in text</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="53">
+          
+          
+          <code class="ruby"># text </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="54">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="55">
           
           
           <code class="ruby"># this message is about a bomb</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="49">
+        <li class="never" data-hits="" data-linenumber="56">
           
           
           <code class="ruby"># abcdabcdabcdabcdabcdabcdabcd</code>

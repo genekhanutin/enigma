@@ -5,7 +5,6 @@ require 'minitest/pride'
 require './lib/rotator'
 
 class RotatorTest < Minitest::Test
-
 	def test_it_has_a_character_map_with_39_characters
 		rotator = Rotator.new
 		assert_equal 39, rotator.character_map.count
@@ -15,7 +14,6 @@ class RotatorTest < Minitest::Test
 		key     = 12345
 		offset  = 1234
 		rotator = Rotator.new(key, offset)
-
 		assert_equal [13, 25, 37, 49], rotator.calculate_key_offset_sum
 	end
 
@@ -23,7 +21,6 @@ class RotatorTest < Minitest::Test
 		key     = 23456
 		offset  = 1234
 		rotator = Rotator.new(key, offset)
-
 		assert_equal [24, 36, 48, 60], rotator.calculate_key_offset_sum
 	end
 
@@ -37,8 +34,8 @@ class RotatorTest < Minitest::Test
 	end
 
 	def test_it_rotates_a_character_by_given_integer
-		rotator = Rotator.new(0, 0, "jjjj")
-		assert_equal "7gs4", rotator.rotate_by([24, 36, 48, 60]) 
+		rotator = Rotator.new(0, 0, "j")
+		
+		assert_equal "7", rotator.rotate_by([24, 36, 48, 60]) 
 	end
-
 end

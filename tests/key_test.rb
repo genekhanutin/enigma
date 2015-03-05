@@ -19,7 +19,7 @@ class KeyTest < Minitest::Test
 		key = Key.new
 		key.stub :key_generator, "12345" do 
 		assert_equal [12,23,34,45], key.key_parser
-	end
+	  end
 	end
 end
 
