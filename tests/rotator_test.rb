@@ -63,11 +63,11 @@ class RotatorTest < Minitest::Test
 		rotator = Rotator.new(23456, 1234, "jbcd")
 
 		assert_equal "7.ly", rotator.encrypt
-	end
+  end
 
 	def test_it_can_encrypt_eight_letters
-		rotator = Rotator.new(23456, 1234, "jbcd")
-		
+		rotator = Rotator.new(23456, 1234, "jbcdfefebomb")
+			# why is this passing?
 		assert_equal "7.ly", rotator.encrypt
 	end
 
