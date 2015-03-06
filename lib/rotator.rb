@@ -1,12 +1,12 @@
 class Rotator
-	attr_reader :key, :offset  # => nil
+	attr_reader :key, :offset
 
 	def initialize(key = 0, offset = 0, message = "")
-		@key     = key.to_s                               # => "0"
-		@offset  = offset.to_s                            # => "0"
-		@message = message                                # => ""
+		@key     = key.to_s
+		@offset  = offset.to_s
+		@message = message
 		#self.run
-	end                                                # => :initialize
+	end
 
 	# def	run
 	# 	rotate_by(calculate_key_offset_sum
@@ -17,8 +17,8 @@ class Rotator
 	# the key and offset and rotate the message by that sum
 
 	def character_map
-		character_map = [*('a'..'z'), *(0..9), ' ', '.', ',']  # => ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, " ", ".", ","]
-  end                                                    # => :character_map
+		character_map = [*('a'..'z'), *(0..9), ' ', '.', ',']
+  end
 
 	def calculate_key_offset_sum
   	4.times.map do |i|
@@ -30,27 +30,51 @@ class Rotator
 
   		key_element + offset_element 
   	end
-	end                              # => :calculate_key_offset_sum
+	end
 
-	def rotate_by(calculated_key_offset_sum)
-		# a,b,c,d         = 
+	def rotation_a(calculated_key_offset_sum)
 		calculate_key_offset_sum = calculated_key_offset_sum
 		first_character = @message[0]
 		result = (character_map.index(first_character) + calculate_key_offset_sum[0]) % 39
 		character_map[result].to_s
-		#(character_map[letter] + calculated_key_offset_sum) % character_map.size
-		# how do i return the char not index position
-	end                                                                                  # => :rotate_by
-end                                                                                   # => :rotate_by
+	end
+
+	def rotation_b(calculated_key_offset_sum)
+		calculate_key_offset_sum = calculated_key_offset_sum
+		second_character = @message[1]
+		result = (character_map.index(second_character) + calculate_key_offset_sum[1]) % 39
+		character_map[result].to_s
+	end
+
+	def rotation_c(calculated_key_offset_sum)
+		calculate_key_offset_sum = calculated_key_offset_sum
+		third_character = @message[2]
+		result = (character_map.index(third_character) + calculate_key_offset_sum[2]) % 39
+		character_map[result].to_s
+	end
+
+	def rotation_d(calculated_key_offset_sum)
+		calculate_key_offset_sum = calculated_key_offset_sum
+		fourth_character = @message[3]
+		result = (character_map.index(fourth_character) + calculate_key_offset_sum[3]) % 39
+		character_map[result].to_s
+	end
+end
 
 # ((index of original letter) + rotation + offset) % character_map.size`
 
-rotator = Rotator.new  # => #<Rotator:0x007fc5b580b9c0 @key="0", @offset="0", @message="">
-rotator.character_map  # => ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, " ", ".", ","]
+rotator = Rotator.new
+rotator.character_map
 
 # sum_of_key_and_offset will be total number of times 
 # a,b,c,d rotate each character in text
 # text 
 
-# this message is about a bomb
-# abcdabcdabcdabcdabcdabcdabcd
+# this 							message is about a bomb
+# [27,30,40,50]
+
+
+
+
+
+

@@ -33,9 +33,27 @@ class RotatorTest < Minitest::Test
 		assert_equal 60, d 
 	end
 
-	def test_it_rotates_a_character_by_given_integer
+	def test_it_rotates_one_character_by_first_rotation_value
 		rotator = Rotator.new(0, 0, "j")
-		
-		assert_equal "7", rotator.rotate_by([24, 36, 48, 60]) 
+		assert_equal "7jjj", rotator.rotation_a([24, 36, 48, 60])
 	end
+
+	def test_it_rotates_four_characters_by_total_rotation_values
+		rotator = Rotator.new(0, 0, "jjjj")
+		assert_equal "jgjj", rotator.rotation_b([24, 36, 48, 60])
+	end
+
+	def test_it_rotates_four_characters_by_total_rotation_value
+		rotator = Rotator.new(0, 0, "jjjj")
+		assert_equal "jjsj", rotator.rotation_c([24, 36, 48, 60])
+	end
+
+	def test_it_rotates_four_characters_by_total_rotation_valuesd
+		skip
+		rotator = Rotator.new(0, 0, "jjjj")
+		assert_equal "jjj4", rotator.rotation_d([24, 36, 48, 60])
+	end
+
+
+	# "7gs4"
 end
