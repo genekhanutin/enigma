@@ -13,7 +13,6 @@ class OffSetCalc
 		offset = square_date.to_s[-4..-1].chars.map do |num|
 			num.to_i
 		end
-		# print out array to hold on to key for decryption
 	end
 end
 

@@ -20,48 +20,56 @@ class Rotator
 		character_map = [*('a'..'z'), *(0..9), ' ', '.', ',']
   end
 
-	def calculate_key_offset_sum
-  	4.times.map do |i|
-  		first_index    = i
-  		second_index   = i + 1
-
-  		key_element    = (key[first_index] + key[second_index]).to_i
-  		offset_element = offset[first_index].to_i
-
-  		key_element + offset_element 
+	def rotation_value_generator
+		encrypted_key = []
+  	4.times do |iteration|
+  		encrypted_key << key_encryptor(iteration, iteration+1)
   	end
+  	encrypted_key
 	end
 
-	def rotation_a(calculated_key_offset_sum)
-		calculate_key_offset_sum = calculated_key_offset_sum
+	def bigg_ass_method
+		# this might call encrypt
+	end
+
+	def encrypt
+		rotation_a(rotation_value_generator) + rotation_b(rotation_value_generator) + rotation_c(rotation_value_generator) + rotation_d(rotation_value_generator)
+	end
+
+	def rotation_a(rotation_values)
 		first_character = @message[0]
-		result = (character_map.index(first_character) + calculate_key_offset_sum[0]) % 39
+		result = (character_map.index(first_character) + rotation_values[0]) % 39
 		character_map[result].to_s
 	end
 
-	def rotation_b(calculated_key_offset_sum)
-		calculate_key_offset_sum = calculated_key_offset_sum
+	def rotation_b(rotation_values)
 		second_character = @message[1]
-		result = (character_map.index(second_character) + calculate_key_offset_sum[1]) % 39
+		result = (character_map.index(second_character) + rotation_values[1]) % 39
 		character_map[result].to_s
 	end
 
-	def rotation_c(calculated_key_offset_sum)
-		calculate_key_offset_sum = calculated_key_offset_sum
+	def rotation_c(rotation_values)
 		third_character = @message[2]
-		result = (character_map.index(third_character) + calculate_key_offset_sum[2]) % 39
+		result = (character_map.index(third_character) + rotation_values[2]) % 39
 		character_map[result].to_s
 	end
 
-	def rotation_d(calculated_key_offset_sum)
-		calculate_key_offset_sum = calculated_key_offset_sum
+	def rotation_d(rotation_values)
 		fourth_character = @message[3]
-		result = (character_map.index(fourth_character) + calculate_key_offset_sum[3]) % 39
+		result = (character_map.index(fourth_character) + rotation_values[3]) % 39
 		character_map[result].to_s
+	end
+
+	private
+
+	def key_encryptor(first_index, second_index)
+		key_pair_amount    	 = (key[first_index] + key[second_index]).to_i
+  	offset_amount 			 = offset[first_index].to_i
+  	key_pair_amount + offset_amount
 	end
 end
 
-# ((index of original letter) + rotation + offset) % character_map.size`
+
 
 rotator = Rotator.new
 rotator.character_map
