@@ -1,3 +1,4 @@
+require "pry"
 class Rotator
 	attr_reader :key, :offset
 
@@ -15,7 +16,7 @@ class Rotator
 	end
 
 	def character_map
-		character_map = [*('a'..'z'), *(0..9), ' ', '.', ',']
+		character_map = [*('a'..'z'), *("0".."9"), ' ', '.', ',']
   end
 
 	def rotation_value_generator
@@ -24,6 +25,13 @@ class Rotator
   		encrypted_key << key_encryptor(iteration, iteration+1)
   	end
   	encrypted_key
+	end
+
+	def decrypt
+		rotation_vals = rotation_value_generator.map do |i|
+			-i
+		end
+		rotation_a(rotation_vals) + rotation_b(rotation_vals) + rotation_c(rotation_vals) + rotation_d(rotation_vals)
 	end
 
 	def encrypt

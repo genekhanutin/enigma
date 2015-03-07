@@ -125,4 +125,11 @@ class RotatorTest < Minitest::Test
 
 		assert_equal "", Rotator.encrypt(key, date_offset, message)
 	end
+
+
+	def test_it_decrypts_four_characters_at_a_time
+		rotator = Rotator.new(23456, 1234, "7.ly")
+
+		assert_equal "jbcd", rotator.decrypt
+  end
 end
