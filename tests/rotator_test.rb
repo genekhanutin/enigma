@@ -160,7 +160,4 @@ class RotatorTest < Minitest::Test
   end
 end
 
-
-
-
-
+	
