@@ -5,7 +5,13 @@ class Rotator
 		@key     = key.to_s
 		@offset  = offset.to_s
 		@message = message
-		#self.run
+	end
+
+	def self.encrypt(key, date_offset, message)
+		encrypted = message.chars.each_slice(4).map do |slice|
+			Rotator.new(key, date_offset, slice.join).encrypt
+		end
+		encrypted.join
 	end
 
 	def character_map
@@ -18,10 +24,6 @@ class Rotator
   		encrypted_key << key_encryptor(iteration, iteration+1)
   	end
   	encrypted_key
-	end
-
-	def bigg_ass_method
-		# this might call encrypt
 	end
 
 	def encrypt

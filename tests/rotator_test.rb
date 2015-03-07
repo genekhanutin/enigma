@@ -66,9 +66,24 @@ class RotatorTest < Minitest::Test
   end
 
 	def test_it_can_encrypt_eight_letters
-		rotator = Rotator.new(23456, 1234, "jbcdfefebomb")
+		# taking stock - what do we have
+		# we have a Rotator object, which given a string
+		# will encrypt the first 4 characters of that string
+		# and return them
+		message = "jbcdfefe"
+		key = 23456
+		date_offset = 1234
+
+		# [["j","b","c","d"],["f","e","f","e"]]
+		
+		#encrypted: Array
+		# of: 4-character Strings
+		# where each string is encrypted
+		# --> array of my encrypted message in
+		# 4-character chunks
+
 			# why is this passing?
-		assert_equal "7.ly", rotator.encrypt
+		assert_equal "7.ly3boz", Rotator.encrypt(key, date_offset, message)
 	end
 
 	def test_it_can_encrypt_ten_letters
