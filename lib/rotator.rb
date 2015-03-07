@@ -37,21 +37,33 @@ class Rotator
 	end
 
 	def rotation_b(rotation_values)
-		second_character = @message[1]
-		result 					 = (character_map.index(second_character) + rotation_values[1]) % 39
-		character_map[result].to_s
+		if @message[1].nil?
+			""
+		else
+			second_character = @message[1]
+			result 					 = (character_map.index(second_character) + rotation_values[1]) % 39
+			character_map[result].to_s
+		end
 	end
 
 	def rotation_c(rotation_values)
-		third_character  = @message[2]
-		result 			     = (character_map.index(third_character) + rotation_values[2]) % 39
-		character_map[result].to_s
+		if @message[2].nil?
+			""
+		else
+			third_character  = @message[2]
+			result 			     = (character_map.index(third_character) + rotation_values[2]) % 39
+			character_map[result].to_s
+		end
 	end
 
 	def rotation_d(rotation_values)
-		fourth_character = @message[3]
-		result 					 = (character_map.index(fourth_character) + rotation_values[3]) % 39
-		character_map[result].to_s
+		if @message[3].nil?
+			""
+		else
+			fourth_character = @message[3]
+			result 					 = (character_map.index(fourth_character) + rotation_values[3]) % 39
+			character_map[result].to_s
+		end
 	end
 
 	private

@@ -86,7 +86,43 @@ class RotatorTest < Minitest::Test
 		assert_equal "7.ly3boz", Rotator.encrypt(key, date_offset, message)
 	end
 
-	def test_it_can_encrypt_ten_letters
+		def test_it_can_encrypt_seven_letters
+		message = "jbcdfef"
+		key = 23456
+		date_offset = 1234
+
+		assert_equal "7.ly3bo", Rotator.encrypt(key, date_offset, message)
 	end
 
+	def test_it_can_encrypt_six_letters
+		message = "jbcdfe"
+		key = 23456
+		date_offset = 1234
+
+		assert_equal "7.ly3b", Rotator.encrypt(key, date_offset, message)
+	end
+
+	def test_it_can_encrypt_five_letters
+		message = "jbcdf"
+		key = 23456
+		date_offset = 1234
+
+		assert_equal "7.ly3", Rotator.encrypt(key, date_offset, message)
+	end
+
+	def test_it_can_encrypt_three_letters
+		message = "jbc"
+		key = 23456
+		date_offset = 1234
+
+		assert_equal "7.l", Rotator.encrypt(key, date_offset, message)
+	end
+
+	def test_it_can_encrypt_no_letters
+		message = ""
+		key = 23456
+		date_offset = 1234
+
+		assert_equal "", Rotator.encrypt(key, date_offset, message)
+	end
 end
