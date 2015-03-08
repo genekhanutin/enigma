@@ -1,45 +1,45 @@
 require "pry"                   # => true
-require_relative "key"          # ~> NoMethodError: undefined method `key_parser' for #<Key:0x007fd0f287adf0>
-require_relative "offset_calc"
+require_relative "key"          # => true
+require_relative "offset_calc"  # => true
 
 class Rotator
-	attr_reader :key, :offset
+	attr_reader :key, :offset  # => nil
 
 	def initialize(key = 0, offset = 0, message = "")
-		key
-		@key     = key.to_s
-		@offset  = offset.to_s
-		@message = message
-	end
+		key                                               # => "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334",...
+		@key     = key.to_s                               # => "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334", "42334",...
+		@offset  = offset.to_s                            # => "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", "1225", ...
+		@message = message                                # => "this", " is ", "a se", "cret", " mes", "sage", ", do", "nt t", "ell ", "anyo", "ne a", "bout", " it ", "or y", "ou w", "ill ", "face", " ser", "ious", " con", "sequ", "ence", "s. y", "ou w", "ill ", "have", " to ", "atte", "nd t", "urin", "g fo", "r 7 ", "mont", "hs", "x6es", "b7o ", "ewoe", "gdat", "b.as", "wzce", "dw,o", "rf6t", "i h ", "e,uo", "r36a", "faqt", "b7p ", "sd6y", "sg6w", "m h ", "jz.e", "bear", "maqs", "b1kn", "w3mu", "i...
+	end                                                # => :initialize
 
 	def self.encrypt(key, date_offset, message)
-		encrypted = message.chars.each_slice(4).map do |slice|
-			Rotator.new(key, date_offset, slice.join).combine_encrypted_characters
-		end
-		encrypted.join
-	end
+		encrypted = message.chars.each_slice(4).map do |slice|                   # => #<Enumerator: ["t", "h", "i", "s", " ", "i", "s", " ", "a", " ", "s", "e", "c", "r", "e", "t", " ", "m", "e", "s", "s", "a", "g", "e", ",", " ", "d", "o", "n", "t", " ", "t", "e", "l", "l", " ", "a", "n", "y", "o", "n", "e", " ", "a", "b", "o", "u", "t", " ", "i", "t", " ", "o", "r", " ", "y", "o", "u", " ", "w", "i", "l", "l", " ", "f", "a", "c", "e", " ", "s", "e", "r", "i", "o", "u", "s", " ", "c", "o", "n", "s...
+			Rotator.new(key, date_offset, slice.join).combine_encrypted_characters  # => "x6es", "b7o ", "ewoe", "gdat", "b.as", "wzce", "dw,o", "rf6t", "i h ", "e,uo", "r36a", "faqt", "b7p ", "sd6y", "sg6w", "m h ", "jz.e", "bear", "maqs", "b1kn", "w3mu", "i,.e", "wx6y", "sg6w", "m h ", "lzre", "bfk ", "efpe", "r26t", "yden", "kwbo", "vw3 ", "qajt", "le"
+		end                                                                      # => ["x6es", "b7o ", "ewoe", "gdat", "b.as", "wzce", "dw,o", "rf6t", "i h ", "e,uo", "r36a", "faqt", "b7p ", "sd6y", "sg6w", "m h ", "jz.e", "bear", "maqs", "b1kn", "w3mu", "i,.e", "wx6y", "sg6w", "m h ", "lzre", "bfk ", "efpe", "r26t", "yden", "kwbo", "vw3 ", "qajt", "le"]
+		encrypted.join                                                           # => "x6esb7o ewoegdatb.aswzcedw,orf6ti h e,uor36afaqtb7p sd6ysg6wm h jz.ebearmaqsb1knw3mui,.ewx6ysg6wm h lzrebfk efper26tydenkwbovw3 qajtle"
+	end                                                                       # => :encrypt
 
 	def self.decrypt(key, date_offset, message)
-		decrypted = message.chars.each_slice(4).map do |slice|
-			Rotator.new(key, date_offset, slice.join).combine_decrypted_characters
-		end
-		decrypted.join
-	end
+		decrypted = message.chars.each_slice(4).map do |slice|                   # => #<Enumerator: ["x", "6", "e", "s", "b", "7", "o", " ", "e", "w", "o", "e", "g", "d", "a", "t", "b", ".", "a", "s", "w", "z", "c", "e", "d", "w", ",", "o", "r", "f", "6", "t", "i", " ", "h", " ", "e", ",", "u", "o", "r", "3", "6", "a", "f", "a", "q", "t", "b", "7", "p", " ", "s", "d", "6", "y", "s", "g", "6", "w", "m", " ", "h", " ", "j", "z", ".", "e", "b", "e", "a", "r", "m", "a", "q", "s", "b", "1", "k", "n", "w...
+			Rotator.new(key, date_offset, slice.join).combine_decrypted_characters  # => "this", " is ", "a se", "cret", " mes", "sage", ", do", "nt t", "ell ", "anyo", "ne a", "bout", " it ", "or y", "ou w", "ill ", "face", " ser", "ious", " con", "sequ", "ence", "s. y", "ou w", "ill ", "have", " to ", "atte", "nd t", "urin", "g fo", "r 7 ", "mont", "hs"
+		end                                                                      # => ["this", " is ", "a se", "cret", " mes", "sage", ", do", "nt t", "ell ", "anyo", "ne a", "bout", " it ", "or y", "ou w", "ill ", "face", " ser", "ious", " con", "sequ", "ence", "s. y", "ou w", "ill ", "have", " to ", "atte", "nd t", "urin", "g fo", "r 7 ", "mont", "hs"]
+		decrypted.join                                                           # => "this is a secret message, dont tell anyone about it or you will face serious consequences. you will have to attend turing for 7 months"
+	end                                                                       # => :decrypt
 
 	def combine_encrypted_characters
-		rotation_a(rotation_value_generator) + rotation_b(rotation_value_generator) + rotation_c(rotation_value_generator) + rotation_d(rotation_value_generator)
-	end
+		rotation_a(rotation_value_generator) + rotation_b(rotation_value_generator) + rotation_c(rotation_value_generator) + rotation_d(rotation_value_generator)  # => "x6es", "b7o ", "ewoe", "gdat", "b.as", "wzce", "dw,o", "rf6t", "i h ", "e,uo", "r36a", "faqt", "b7p ", "sd6y", "sg6w", "m h ", "jz.e", "bear", "maqs", "b1kn", "w3mu", "i,.e", "wx6y", "sg6w", "m h ", "lzre", "bfk ", "efpe", "r26t", "yden", "kwbo", "vw3 ", "qajt", "le"
+	end                                                                                                                                                         # => :combine_encrypted_characters
 
 	def combine_decrypted_characters
-		rotation_vals = rotation_value_generator.map do |i|
-			-i
-		end
-		rotation_a(rotation_vals) + rotation_b(rotation_vals) + rotation_c(rotation_vals) + rotation_d(rotation_vals)
-	end
+		rotation_vals = rotation_value_generator.map do |i|                                                            # => [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [...
+			-i                                                                                                            # => -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39, -43, -25, -35, -39,...
+		end                                                                                                            # => [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43, -25, -35, -39], [-43,...
+		rotation_a(rotation_vals) + rotation_b(rotation_vals) + rotation_c(rotation_vals) + rotation_d(rotation_vals)  # => "this", " is ", "a se", "cret", " mes", "sage", ", do", "nt t", "ell ", "anyo", "ne a", "bout", " it ", "or y", "ou w", "ill ", "face", " ser", "ious", " con", "sequ", "ence", "s. y", "ou w", "ill ", "have", " to ", "atte", "nd t", "urin", "g fo", "r 7 ", "mont", "hs"
+	end                                                                                                             # => :combine_decrypted_characters
 	
 	def character_map
-		character_map = [*('a'..'z'), *("0".."9"), ' ', '.', ',']
-  end
+		character_map = [*('a'..'z'), *("0".."9"), ' ', '.', ',']  # => ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", ".", ","], ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", ".", ","], ["a", "b", "c", "d", "e", "f", "g", "...
+  end                                                        # => :character_map
 
 	def rotation_value_generator
 		# "41521"
@@ -47,69 +47,62 @@ class Rotator
 		#"27519"
 		#[27,75,51,19]                   # => [27, 75, 51, 19]
 
-		encrypted_key = []
-  	4.times do |iteration|
-  		encrypted_key << key_encryptor(iteration, iteration + 1)
-  	end
-  	encrypted_key
-	end
+		encrypted_key = []                                          # => [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []...
+  	4.times do |iteration|                                     # => 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4...
+  		encrypted_key << key_encryptor(iteration, iteration + 1)  # => [43], [43, 25], [43, 25, 35], [43, 25, 35, 39], [43], [43, 25], [43, 25, 35], [43, 25, 35, 39], [43], [43, 25], [43, 25, 35], [43, 25, 35, 39], [43], [43, 25], [43, 25, 35], [43, 25, 35, 39], [43], [43, 25], [43, 25, 35], [43, 25, 35, 39], [43], [43, 25], [43, 25, 35], [43, 25, 35, 39], [43], [43, 25], [43, 25, 35], [43, 25, 35, 39], [43], [43, 25], [43, 25, 35], [43, 25, 35, 39], [43], [43, 25], [43, 25, 35], [43, 25, 35, 39]...
+  	end                                                        # => 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4...
+  	encrypted_key                                              # => [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39], [43, 25, 35, 39]...
+	end                                                          # => :rotation_value_generator
 
 	def rotation_a(rotation_values)
-		first_character  = @message[0]
-		result           = (character_map.index(first_character) + rotation_values[0]) % 39
-		character_map[result].to_s
-	end
+		first_character  = @message[0]                                                            # => "t", " ", "a", "c", " ", "s", ",", "n", "e", "a", "n", "b", " ", "o", "o", "i", "f", " ", "i", " ", "s", "e", "s", "o", "i", "h", " ", "a", "n", "u", "g", "r", "m", "h", "x", "b", "e", "g", "b", "w", "d", "r", "i", "e", "r", "f", "b", "s", "s", "m", "j", "b", "m", "b", "w", "i", "w", "s", "m", "l", "b", "e", "r", "y", "k", "v", "q", "l"
+		result           = (character_map.index(first_character).to_i + rotation_values[0]) % 39  # => 23, 1, 4, 6, 1, 22, 3, 17, 8, 4, 17, 5, 1, 18, 18, 12, 9, 1, 12, 1, 22, 8, 22, 18, 12, 11, 1, 4, 17, 24, 10, 21, 16, 11, 19, 36, 0, 2, 36, 18, 38, 13, 4, 0, 13, 1, 36, 14, 14, 8, 5, 36, 8, 36, 18, 4, 18, 14, 8, 7, 36, 0, 13, 20, 6, 17, 12, 7
+		character_map[result].to_s                                                                # => "x", "b", "e", "g", "b", "w", "d", "r", "i", "e", "r", "f", "b", "s", "s", "m", "j", "b", "m", "b", "w", "i", "w", "s", "m", "l", "b", "e", "r", "y", "k", "v", "q", "l", "t", " ", "a", "c", " ", "s", ",", "n", "e", "a", "n", "b", " ", "o", "o", "i", "f", " ", "i", " ", "s", "e", "s", "o", "i", "h", " ", "a", "n", "u", "g", "r", "m", "h"
+	end                                                                                        # => :rotation_a
 
 	def rotation_b(rotation_values)
-		if @message[1].nil?
+		if @message[1].nil?                                                                     # => false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, fal...
 			""
 		else
-			second_character = @message[1]
-			result 					 = (character_map.index(second_character) + rotation_values[1]) % 39
-			character_map[result].to_s
-		end
-	end
+			second_character = @message[1]                                                         # => "h", "i", " ", "r", "m", "a", " ", "t", "l", "n", "e", "o", "i", "r", "u", "l", "a", "s", "o", "c", "e", "n", ".", "u", "l", "a", "t", "t", "d", "r", " ", " ", "o", "s", "6", "7", "w", "d", ".", "z", "w", "f", " ", ",", "3", "a", "7", "d", "g", " ", "z", "e", "a", "1", "3", ",", "x", "g", " ", "z", "f", "f", "2", "d", "w", "w", "a", "e"
+			result 					 = (character_map.index(second_character).to_i + rotation_values[1]) % 39  # => 32, 33, 22, 3, 37, 25, 22, 5, 36, 38, 29, 0, 33, 3, 6, 36, 25, 4, 0, 27, 29, 38, 23, 6, 36, 25, 5, 5, 28, 3, 22, 22, 0, 4, 7, 8, 36, 17, 12, 0, 36, 19, 11, 13, 4, 14, 8, 17, 20, 11, 0, 18, 14, 2, 4, 13, 37, 20, 11, 0, 19, 19, 3, 17, 36, 36, 14, 18
+			character_map[result].to_s                                                             # => "6", "7", "w", "d", ".", "z", "w", "f", " ", ",", "3", "a", "7", "d", "g", " ", "z", "e", "a", "1", "3", ",", "x", "g", " ", "z", "f", "f", "2", "d", "w", "w", "a", "e", "h", "i", " ", "r", "m", "a", " ", "t", "l", "n", "e", "o", "i", "r", "u", "l", "a", "s", "o", "c", "e", "n", ".", "u", "l", "a", "t", "t", "d", "r", " ", " ", "o", "s"
+		end                                                                                     # => "6", "7", "w", "d", ".", "z", "w", "f", " ", ",", "3", "a", "7", "d", "g", " ", "z", "e", "a", "1", "3", ",", "x", "g", " ", "z", "f", "f", "2", "d", "w", "w", "a", "e", "h", "i", " ", "r", "m", "a", " ", "t", "l", "n", "e", "o", "i", "r", "u", "l", "a", "s", "o", "c", "e", "n", ".", "u", "l", "a", "t", "t", "d", "r", " ", " ", "o", "s"
+	end                                                                                      # => :rotation_b
 
 	def rotation_c(rotation_values)
-		if @message[2].nil?
-			""
+		if @message[2].nil?                                                                      # => false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, fal...
+			""                                                                                      # => "", ""
 		else
-			third_character  = @message[2]
-			result 			     = (character_map.index(third_character) + rotation_values[2]) % 39
-			character_map[result].to_s
-		end
-	end
+			third_character  = @message[2]                                                          # => "i", "s", "s", "e", "e", "g", "d", " ", "l", "y", " ", "u", "t", " ", " ", "l", "c", "e", "u", "o", "q", "c", " ", " ", "l", "v", "o", "t", " ", "i", "f", "7", "n", "e", "o", "o", "a", "a", "c", ",", "6", "h", "u", "6", "q", "p", "6", "6", "h", ".", "a", "q", "k", "m", ".", "6", "6", "h", "r", "k", "p", "6", "e", "b", "3", "j"
+			result 			     = (character_map.index(third_character).to_i + rotation_values[2]) % 39  # => 4, 14, 14, 0, 0, 2, 38, 32, 7, 20, 32, 16, 15, 32, 32, 7, 37, 0, 16, 10, 12, 37, 32, 32, 7, 17, 10, 15, 32, 4, 1, 29, 9, 8, 18, 18, 4, 4, 6, 3, 36, 11, 24, 36, 20, 19, 36, 36, 11, 2, 4, 20, 14, 16, 2, 36, 36, 11, 21, 14, 19, 36, 8, 5, 33, 13
+			character_map[result].to_s                                                              # => "e", "o", "o", "a", "a", "c", ",", "6", "h", "u", "6", "q", "p", "6", "6", "h", ".", "a", "q", "k", "m", ".", "6", "6", "h", "r", "k", "p", "6", "e", "b", "3", "j", "i", "s", "s", "e", "e", "g", "d", " ", "l", "y", " ", "u", "t", " ", " ", "l", "c", "e", "u", "o", "q", "c", " ", " ", "l", "v", "o", "t", " ", "i", "f", "7", "n"
+		end                                                                                      # => "e", "o", "o", "a", "a", "c", ",", "6", "h", "u", "6", "q", "p", "6", "6", "h", ".", "a", "q", "k", "m", ".", "6", "6", "h", "r", "k", "p", "6", "e", "b", "3", "j", "", "i", "s", "s", "e", "e", "g", "d", " ", "l", "y", " ", "u", "t", " ", " ", "l", "c", "e", "u", "o", "q", "c", " ", " ", "l", "v", "o", "t", " ", "i", "f", "7", "n", ""
+	end                                                                                       # => :rotation_c
 
 	def rotation_d(rotation_values)
-		if @message[3].nil?
-			""
+		if @message[3].nil?                                                                     # => false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, fals...
+			""                                                                                     # => "", ""
 		else
-			fourth_character = @message[3]
-			result 					 = (character_map.index(fourth_character) + rotation_values[3]) % 39
-			character_map[result].to_s
-		end
-	end
+			fourth_character = @message[3]                                                         # => "s", " ", "e", "t", "s", "e", "o", "t", " ", "o", "a", "t", " ", "y", "w", " ", "e", "r", "s", "n", "u", "e", "y", "w", " ", "e", " ", "e", "t", "n", "o", " ", "t", "s", " ", "e", "t", "s", "e", "o", "t", " ", "o", "a", "t", " ", "y", "w", " ", "e", "r", "s", "n", "u", "e", "y", "w", " ", "e", " ", "e", "t", "n", "o", " ", "t"
+			result 					 = (character_map.index(fourth_character).to_i + rotation_values[3]) % 39  # => 18, 36, 4, 19, 18, 4, 14, 19, 36, 14, 0, 19, 36, 24, 22, 36, 4, 17, 18, 13, 20, 4, 24, 22, 36, 4, 36, 4, 19, 13, 14, 36, 19, 18, 36, 4, 19, 18, 4, 14, 19, 36, 14, 0, 19, 36, 24, 22, 36, 4, 17, 18, 13, 20, 4, 24, 22, 36, 4, 36, 4, 19, 13, 14, 36, 19
+			character_map[result].to_s                                                             # => "s", " ", "e", "t", "s", "e", "o", "t", " ", "o", "a", "t", " ", "y", "w", " ", "e", "r", "s", "n", "u", "e", "y", "w", " ", "e", " ", "e", "t", "n", "o", " ", "t", "s", " ", "e", "t", "s", "e", "o", "t", " ", "o", "a", "t", " ", "y", "w", " ", "e", "r", "s", "n", "u", "e", "y", "w", " ", "e", " ", "e", "t", "n", "o", " ", "t"
+		end                                                                                     # => "s", " ", "e", "t", "s", "e", "o", "t", " ", "o", "a", "t", " ", "y", "w", " ", "e", "r", "s", "n", "u", "e", "y", "w", " ", "e", " ", "e", "t", "n", "o", " ", "t", "", "s", " ", "e", "t", "s", "e", "o", "t", " ", "o", "a", "t", " ", "y", "w", " ", "e", "r", "s", "n", "u", "e", "y", "w", " ", "e", " ", "e", "t", "n", "o", " ", "t", ""
+	end                                                                                      # => :rotation_d
 
-	private
+	private  # => Rotator
 
 	def key_encryptor(first_index, second_index)
-		key_pair_amount  = (key[first_index] + key[second_index]).to_i
-  	offset_amount 	 = offset[first_index].to_i
-  	key_pair_amount + offset_amount
-	end
-end
+		key_pair_amount  = (key[first_index] + key[second_index]).to_i  # => 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33, 34, 42, 23, 33...
+  	offset_amount 	 = offset[first_index].to_i                     # => 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, 2, 5, 1, 2, ...
+  	key_pair_amount + offset_amount                                # => 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35, 39, 43, 25, 35...
+	end                                                              # => :key_encryptor
+end                                                               # => :key_encryptor
 
-key = Key.new.key_generator
-offset = OffsetCalc.new.last_four_digits_of_squared_date
-encrypted_message = Rotator.encrypt(key, offset, "hey mambo, mambo italiano")
-Rotator.decrypt(key, 1225, encrypted_message)
-
-# ~> NoMethodError
-# ~> undefined method `key_parser' for #<Key:0x007fd0f287adf0>
-# ~>
-# ~> /Users/genekhanutin/home_work/enigma/lib/key.rb:18:in `<top (required)>'
-# ~> /Users/genekhanutin/home_work/enigma/lib/rotator.rb:2:in `require_relative'
-# ~> /Users/genekhanutin/home_work/enigma/lib/rotator.rb:2:in `<main>'
+key = Key.new.key_generator                                                                                                                                                               # => "42334"
+offset = OffsetCalc.new.last_four_digits_of_squared_date                                                                                                                                  # => "4225"
+encrypted_message = Rotator.encrypt(key, 1225, "this is a secret message, dont tell anyone about it or you will face serious consequences. you will have to attend turing for 7 months")  # => "x6esb7o ewoegdatb.aswzcedw,orf6ti h e,uor36afaqtb7p sd6ysg6wm h jz.ebearmaqsb1knw3mui,.ewx6ysg6wm h lzrebfk efper26tydenkwbovw3 qajtle"
+Rotator.decrypt(key, 1225, encrypted_message)                                                                                                                                             # => "this is a secret message, dont tell anyone about it or you will face serious consequences. you will have to attend turing for 7 months"
 
 
 
