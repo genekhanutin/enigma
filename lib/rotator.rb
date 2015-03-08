@@ -1,12 +1,11 @@
-require "pry"                   # => true
-require_relative "key"          # ~> NoMethodError: undefined method `key_parser' for #<Key:0x007fd0f287adf0>
+require "pry"
+require_relative "key"
 require_relative "offset_calc"
 
 class Rotator
 	attr_reader :key, :offset
 
 	def initialize(key = 0, offset = 0, message = "")
-		key
 		@key     = key.to_s
 		@offset  = offset.to_s
 		@message = message
@@ -42,11 +41,6 @@ class Rotator
   end
 
 	def rotation_value_generator
-		# "41521"
-		# [41,15,52,21]
-		#"27519"
-		#[27,75,51,19]                   # => [27, 75, 51, 19]
-
 		encrypted_key = []
   	4.times do |iteration|
   		encrypted_key << key_encryptor(iteration, iteration + 1)
@@ -103,13 +97,6 @@ key = Key.new.key_generator
 offset = OffsetCalc.new.last_four_digits_of_squared_date
 encrypted_message = Rotator.encrypt(key, offset, "hey mambo, mambo italiano")
 Rotator.decrypt(key, 1225, encrypted_message)
-
-# ~> NoMethodError
-# ~> undefined method `key_parser' for #<Key:0x007fd0f287adf0>
-# ~>
-# ~> /Users/genekhanutin/home_work/enigma/lib/key.rb:18:in `<top (required)>'
-# ~> /Users/genekhanutin/home_work/enigma/lib/rotator.rb:2:in `require_relative'
-# ~> /Users/genekhanutin/home_work/enigma/lib/rotator.rb:2:in `<main>'
 
 
 

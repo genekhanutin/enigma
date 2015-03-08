@@ -12,16 +12,19 @@ class OffsetCalcTest < Minitest::Test
 
 	def test_it_has_a_date_in_ddmmyy_format
 		oc = OffsetCalc.new("121212")
+
 		assert_equal 121212, oc.date
 	end
 
 	def test_it_squares_if_date_starts_with_zero
 		oc = OffsetCalc.new("022315")
+
 		assert_equal 14960959225, oc.square_date
 	end
 
 	def test_it_squares_if_date_starts_with_zero
 		oc = OffsetCalc.new("122315")
+		
 		assert_equal 14960959225, oc.square_date
 	end	
 

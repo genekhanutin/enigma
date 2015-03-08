@@ -16,12 +16,5 @@ class OffsetCalc
 	end
 end
 
-
-# Time.now.strftime("%m%d%y").to_i
-
-#oc = OffsetCalc.new(122315)          # => #<OffsetCalc:0x007fc255007570 @date=122315>
-#oc.last_four_digits_of_squared_date  # => [9, 2, 2, 5]
-
 oc = OffsetCalc.new
-
 oc.last_four_digits_of_squared_date

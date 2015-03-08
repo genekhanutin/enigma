@@ -7,6 +7,7 @@ require './lib/rotator'
 class RotatorTest < Minitest::Test
 	def test_it_has_a_character_map_with_39_characters
 		rotator = Rotator.new
+
 		assert_equal 39, rotator.character_map.count
 	end
 
@@ -14,6 +15,7 @@ class RotatorTest < Minitest::Test
 		key     = 12345
 		offset  = 1234
 		rotator = Rotator.new(key, offset)
+
 		assert_equal [13, 25, 37, 49], rotator.rotation_value_generator
 	end
 
@@ -21,12 +23,14 @@ class RotatorTest < Minitest::Test
 		key     = 23456
 		offset  = 1234
 		rotator = Rotator.new(key, offset)
+
 		assert_equal [24, 36, 48, 60], rotator.rotation_value_generator
 	end
 
 	def test_rotation_value_generator_method_can_assign_each_rotation_value_to_variables
 		rotator = Rotator.new(23456, 1234)
 		a,b,c,d = rotator.rotation_value_generator
+
 		assert_equal 24, a 
 		assert_equal 36, b 
 		assert_equal 48, c 
@@ -34,7 +38,7 @@ class RotatorTest < Minitest::Test
 	end
 
 	def test_rotation_a_rotates_first_character_by_first_rotation_value
-		rotator = Rotator.new(23456, 1234, "jklm")
+		rotator 				= Rotator.new(23456, 1234, "jklm")
 		rotation_values = rotator.rotation_value_generator
 
 		assert_equal "7", rotator.rotation_a(rotation_values)
