@@ -14,7 +14,7 @@ class Encrypt
 		rotator = Rotator.
 
 f = File.new('../enigma/lib/message_sample1.txt' , 'w')
-f.puts("here is a secret message, don't tell anyone about it. if you do, you will have to face serious consequences; you'll have to attend turing for 7 months!")
+f.puts("here is a secret message, don't tell anyone about it. if you do, you will have to face serious consequences. you'll have to attend turing for 7 months!")
 f.close
 end
 
