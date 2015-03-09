@@ -162,6 +162,5 @@ class RotatorTest < Minitest::Test
 
   	assert_equal "j", Rotator.decrypt(key, date_offset, message)
   end
-end
 
-	
+end

@@ -5,19 +5,18 @@ require_relative 'rotator'
 class Encrypt
 
 	def initialize
-		@key     = Key.new
-		@offset  = OffsetCalc.new
-		@message = File.read(ARGV[0]) #|| 'lib/message_sample1.txt')
+		@key     = Key.new.key_generator
+		@offset  = OffsetCalc.new.last_four_digits_of_squared_date
+		@message = File.read(ARGV[0])
 	end
 
 	def run
-		rotator = Rotator.encrypt(@key.key_generator, @offset.last_four_digits_of_squared_date, @message)
-		#file_to_write_to = File.write(ARGV[2] , rotator)
+		rotator = Rotator.encrypt(@key, @offset, @message)
+		File.write(ARGV[1] , rotator)
 		#file_to_write_to.puts(@message || "here is a secret message")
 		#file_to_write_to.close
-		puts rotator
+		puts "Created #{ARGV[1]} with key #{@key} and offset #{@offset}"
 	end
-	# prints: "created encrypted file...with key...with offset..."                                                                                                # => :run
 end
 
 encryptor = Encrypt.new
