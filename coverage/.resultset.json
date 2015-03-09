@@ -1,19 +1,29 @@
 {
   "MiniTest": {
     "coverage": {
-      "/Users/genekhanutin/home_work/enigma/lib/key.rb": [
+      "/Users/genekhanutin/home_work/enigma/lib/offset_calc.rb": [
         1,
+        1,
+        null,
+        1,
+        4,
+        null,
+        null,
         1,
         3,
-        3,
+        null,
+        null,
+        1,
+        2,
+        8,
+        null,
         null,
         null,
         null,
         1,
-        null,
-        null
+        1
       ]
     },
-    "timestamp": 1425859037
+    "timestamp": 1425935342
   }
 }

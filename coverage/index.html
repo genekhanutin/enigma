@@ -14,7 +14,7 @@
       <img src="./assets/0.9.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-08T17:57:17-06:00">2015-03-08T17:57:17-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-09T15:09:02-06:00">2015-03-09T15:09:02-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.8
+         2.2
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>1</b> files in total.
-    <b>5</b> relevant lines. 
-    <span class="green"><b>5</b> lines covered</span> and
+    <b>11</b> relevant lines. 
+    <span class="green"><b>11</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -51,13 +51,13 @@
     <tbody>
       
       <tr>
-        <td class="strong"><a href="#dceed6752ab85a018b6c3cae4b8bbb58e2cb4f6a" class="src_link" title="lib/key.rb">lib/key.rb</a></td>
+        <td class="strong"><a href="#ad67421f7bc92807e9c6fbad2927d905d81fdbd3" class="src_link" title="lib/offset_calc.rb">lib/offset_calc.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>10</td>
-        <td>5</td>
-        <td>5</td>
+        <td>20</td>
+        <td>11</td>
+        <td>11</td>
         <td>0</td>
-        <td>1.8</td>
+        <td>2.2</td>
       </tr>
       
     </tbody>
@@ -76,13 +76,13 @@
     
       <div class="source_files">
       
-        <div class="source_table" id="dceed6752ab85a018b6c3cae4b8bbb58e2cb4f6a">
+        <div class="source_table" id="ad67421f7bc92807e9c6fbad2927d905d81fdbd3">
   <div class="header">
-    <h3>lib/key.rb</h3>
+    <h3>lib/offset_calc.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>5</b> relevant lines. 
-      <span class="green"><b>5</b> lines covered</span> and
+      <b>11</b> relevant lines. 
+      <span class="green"><b>11</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -93,37 +93,37 @@
         <li class="covered" data-hits="1" data-linenumber="1">
           <span class="hits">1</span>
           
-          <code class="ruby">class Key</code>
+          <code class="ruby">class OffsetCalc</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="2">
           <span class="hits">1</span>
           
-          <code class="ruby">	def key_generator</code>
+          <code class="ruby">	attr_reader :date  # =&gt; nil</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="3">
-          <span class="hits">3</span>
+        <li class="never" data-hits="" data-linenumber="3">
           
-          <code class="ruby">		numbers        = [1,2,3,4,5,6,7,8,9]           # =&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9]</code>
+          
+          <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="4">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
           
-          <code class="ruby">		numbers_string = (numbers * 5).sample(5).join  # =&gt; &quot;78439&quot;</code>
+          <code class="ruby">	def initialize(date = Time.now.strftime(&quot;%m%d%y&quot;))</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="5">
+        <li class="covered" data-hits="4" data-linenumber="5">
+          <span class="hits">4</span>
           
-          
-          <code class="ruby">	end                                             # =&gt; :key_generator</code>
+          <code class="ruby">		@date = date.to_i                                  # =&gt; 30815</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="6">
           
           
-          <code class="ruby">end                                              # =&gt; :key_generator</code>
+          <code class="ruby">	end                                                 # =&gt; :initialize</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
@@ -135,19 +135,79 @@
         <li class="covered" data-hits="1" data-linenumber="8">
           <span class="hits">1</span>
           
-          <code class="ruby">key = Key.new.key_generator  # =&gt; &quot;78439&quot;</code>
+          <code class="ruby">	def square_date</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="9">
+        <li class="covered" data-hits="3" data-linenumber="9">
+          <span class="hits">3</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">		date.to_i * date.to_i  # =&gt; 949564225</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="10">
           
           
+          <code class="ruby">	end                     # =&gt; :square_date</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
           <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
+          
+          <code class="ruby">	def last_four_digits_of_squared_date</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="13">
+          <span class="hits">2</span>
+          
+          <code class="ruby">		offset = square_date.to_s[-4..-1].chars.map do |num|  # =&gt; [&quot;4&quot;, &quot;2&quot;, &quot;2&quot;, &quot;5&quot;]</code>
+        </li>
+      
+        <li class="covered" data-hits="8" data-linenumber="14">
+          <span class="hits">8</span>
+          
+          <code class="ruby">			num                                                  # =&gt; &quot;4&quot;, &quot;2&quot;, &quot;2&quot;, &quot;5&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="15">
+          
+          
+          <code class="ruby">		end.join                                              # =&gt; &quot;4225&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="16">
+          
+          
+          <code class="ruby">	end                                                    # =&gt; :last_four_digits_of_squared_date</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
+          
+          
+          <code class="ruby">end                                                     # =&gt; :last_four_digits_of_squared_date</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="19">
+          <span class="hits">1</span>
+          
+          <code class="ruby">oc = OffsetCalc.new                  # =&gt; #&lt;OffsetCalc:0x007fd60a0075e8 @date=30815&gt;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="20">
+          <span class="hits">1</span>
+          
+          <code class="ruby">oc.last_four_digits_of_squared_date  # =&gt; &quot;4225&quot;</code>
         </li>
       
     </ol>

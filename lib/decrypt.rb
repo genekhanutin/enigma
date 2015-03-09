@@ -1,2 +1,2 @@
-class Decryptor
+class Decrypt
 end
