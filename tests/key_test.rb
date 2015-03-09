@@ -1,7 +1,7 @@
-require 'simplecov'         # => true
-SimpleCov.start             # => nil
-require 'minitest/autorun'  # => true
-require 'minitest/pride'    # => true
+require 'simplecov'
+SimpleCov.start
+require 'minitest/autorun'
+require 'minitest/pride'
 require './lib/key'
 
 class KeyTest < Minitest::Test
@@ -31,8 +31,6 @@ class KeyTest < Minitest::Test
 		refute key.key_generator.include?("0")
 	end	
 end
-
-# >> Coverage report generated for MiniTest to /Users/genekhanutin/home_work/enigma/lib/coverage. 0.0 / 0.0 LOC (100.0%) covered.
 
 
 

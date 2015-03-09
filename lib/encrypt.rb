@@ -1,22 +1,26 @@
-require_relative 'key'
-require_relative 'offset_calc'
-require_relative 'rotator'
+require_relative 'key'          # => true
+require_relative 'offset_calc'  # => true
+require_relative 'rotator'      # => true
 
 class Encrypt
 
 	def initialize
-		@key     = Key.new
-		@offset  = OffsetCalc.new
-		@message = File.open(ARGV[0] || 'message_sample1.txt' , 'r' )
-	end
+		@key     = Key.new                                      # => #<Key:0x007f910207a888>
+		@offset  = OffsetCalc.new                               # => #<OffsetCalc:0x007f910207a3b0 @date=30815>
+		@message = File.open('~/home_work/enigma/lib/message_sample1.txt', 'r' )  # ~> Errno::ENOENT: No such file or directory @ rb_sysopen - lib/message_sample1.txt
+	end                                                      # => :initialize
 
 	def run
-		rotator = Rotator.
+		rotator = Rotator.encrypt(@key.key_generator, @offset.last_four_digits_of_squared_date, @message)
+		file_to_write_to = File.write(ARGV[1] || '../enigma/lib/encrypted.txt' , 'w')
+		file_to_write_to.puts(@message || "a secret message for you")
+		file_to_write_to.close
+	end                                                                                                 # => :run
+	# prints created encrypted file...with key...with offset...                                                                                                # => :run
+end                                                                                                  # => :run
 
-f = File.new('../enigma/lib/message_sample1.txt' , 'w')
-f.puts("here is a secret message, don't tell anyone about it. if you do, you will have to face serious consequences. you'll have to attend turing for 7 months!")
-f.close
-end
+encryptor = Encrypt.new
+encryptor.run
 
 
 
@@ -53,4 +57,13 @@ end
 
 # 	File.open("encrypted.txt", "w") { |f| f.write(rotator.encrypt)} 
 # 	end         
+
+# ~> Errno::ENOENT
+# ~> No such file or directory @ rb_sysopen - lib/message_sample1.txt
+# ~>
+# ~> /Users/genekhanutin/home_work/enigma/lib/encrypt.rb:10:in `initialize'
+# ~> /Users/genekhanutin/home_work/enigma/lib/encrypt.rb:10:in `open'
+# ~> /Users/genekhanutin/home_work/enigma/lib/encrypt.rb:10:in `initialize'
+# ~> /Users/genekhanutin/home_work/enigma/lib/encrypt.rb:22:in `new'
+# ~> /Users/genekhanutin/home_work/enigma/lib/encrypt.rb:22:in `<main>'
 
