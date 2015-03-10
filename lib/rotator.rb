@@ -1,4 +1,4 @@
-require "pry"
+
 require_relative "key"
 require_relative "offset_calc"
 
@@ -33,7 +33,7 @@ class Rotator
       key += 1
       unencrypted_message = Rotator.decrypt(key, date_offset, message)
     end
-    key
+    key    
   end
 
   def combine_encrypted_characters
@@ -103,11 +103,3 @@ class Rotator
     key_pair_amount + offset_amount
   end
 end
-
-
-
-
-
-
-
-

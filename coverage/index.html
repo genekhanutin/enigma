@@ -14,7 +14,7 @@
       <img src="./assets/0.9.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-10T09:28:39-06:00">2015-03-10T09:28:39-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-10T14:21:56-06:00">2015-03-10T14:21:56-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -99,7 +99,7 @@
         <li class="covered" data-hits="1" data-linenumber="2">
           <span class="hits">1</span>
           
-          <code class="ruby">	attr_reader :date</code>
+          <code class="ruby">  attr_reader :date</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="3">
@@ -111,19 +111,19 @@
         <li class="covered" data-hits="1" data-linenumber="4">
           <span class="hits">1</span>
           
-          <code class="ruby">	def initialize(date = Time.now.strftime(&quot;%m%d%y&quot;))</code>
+          <code class="ruby">  def initialize(date = Time.now.strftime(&quot;%m%d%y&quot;))</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="5">
           <span class="hits">3</span>
           
-          <code class="ruby">		@date = date.to_i</code>
+          <code class="ruby">    @date = date.to_i</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="6">
           
           
-          <code class="ruby">	end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
@@ -135,19 +135,19 @@
         <li class="covered" data-hits="1" data-linenumber="8">
           <span class="hits">1</span>
           
-          <code class="ruby">	def square_date</code>
+          <code class="ruby">  def square_date</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="9">
           <span class="hits">2</span>
           
-          <code class="ruby">		date.to_i * date.to_i</code>
+          <code class="ruby">    date.to_i * date.to_i</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="10">
           
           
-          <code class="ruby">	end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="11">
@@ -159,31 +159,31 @@
         <li class="covered" data-hits="1" data-linenumber="12">
           <span class="hits">1</span>
           
-          <code class="ruby">	def last_four_digits_of_squared_date</code>
+          <code class="ruby">  def last_four_digits_of_squared_date</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="13">
           <span class="hits">1</span>
           
-          <code class="ruby">		offset = square_date.to_s[-4..-1].chars.map do |num|</code>
+          <code class="ruby">    offset = square_date.to_s[-4..-1].chars.map do |num|</code>
         </li>
       
         <li class="covered" data-hits="4" data-linenumber="14">
           <span class="hits">4</span>
           
-          <code class="ruby">			num</code>
+          <code class="ruby">      num</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
           
           
-          <code class="ruby">		end.join</code>
+          <code class="ruby">    end.join</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
           
           
-          <code class="ruby">	end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="17">

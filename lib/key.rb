@@ -4,7 +4,3 @@ class Key
     numbers_string = (numbers * 5).sample(5).join
   end
 end
-
-
-
-

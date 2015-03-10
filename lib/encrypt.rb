@@ -20,4 +20,4 @@ end
 
 encryptor = Encrypt.new
 encryptor.run
-    #@offset  = OffsetCalc.new.last_four_digits_of_squared_date
+    
