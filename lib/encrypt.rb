@@ -13,8 +13,6 @@ class Encrypt
 	def run
 		rotator = Rotator.encrypt(@key, @offset, @message)
 		File.write(ARGV[1] , rotator)
-		#file_to_write_to.puts(@message || "here is a secret message")
-		#file_to_write_to.close
 		puts "Created #{ARGV[1]} with key #{@key} and offset #{@offset}"
 	end
 end

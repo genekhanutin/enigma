@@ -163,4 +163,23 @@ class RotatorTest < Minitest::Test
   	assert_equal "j", Rotator.decrypt(key, date_offset, message)
   end
 
+  def test_it_can_crack_the_secret_key_with_eight_character_message
+  	message 		= "s8hz.aht"
+  	date_offset = 1234
+
+  	assert_equal 23456, Rotator.crack(date_offset, message)
+  end
+
+  def test_it_can_crack_the_secret_key_with_longer_message
+  	message = "yepocfz6yel6gfncjp06xbjnjqf7jkk7d"
+  	date_offset = 1234
+  	assert_equal 43431, Rotator.crack(date_offset, message)
+  end
 end
+
+
+
+
+
+
+
